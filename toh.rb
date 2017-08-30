@@ -68,6 +68,11 @@ while true
     a = a_replay
     b = b_replay
     c = c_replay
+  elsif (into != a || into != b || into != c) || (from != a || from != b || from != c)
+    p "error! this cannot be done. please retry"
+    a = a_replay
+    b = b_replay
+    c = c_replay
   end
 
   p "here is the status | a = #{a} | b = #{b} | C = #{c} |"
