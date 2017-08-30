@@ -10,36 +10,41 @@ p "pick the level/number of stacks you want in the hanoi tower"
 
 num = gets.chomp
 
-A = []
-B = []
-C = []
+a = []
+b = []
+c = []
 
 i = num.to_i
 
 until i == 0
-  A << i
+  a << i
   i = i - 1
 end
 
-init = A.dup
+init = a.dup
 
-p "here is the status | A = #{A} | B = #{B} | C = #{C} |"
-p "objective: move all the blocks from array A to C"
+p "here is the status | a = #{a} | b = #{b} | c = #{c} |"
+p "objective: move all the blocks from array a to c"
 
 #making the loop
 
+
 while true
+
+  a_replay = a.dup
+  b_replay = b.dup
+  c_replay = c.dup
 
   p "which array do you want to move a stack/number from?"
 
   from = gets.chomp
 
-  if from == "A"
-    stack = A.pop
-  elsif from == "B"
-    stack = B.pop
-  elsif from == "C"
-    stack = C.pop
+  if from == "a"
+    stack = a.pop
+  elsif from == "b"
+    stack = b.pop
+  elsif from == "c"
+    stack = c.pop
   end
 
   p "you just moved stack: #{stack} from array: #{from}"
@@ -47,16 +52,23 @@ while true
 
   into = gets.chomp
 
-  if into == "A"
-    A << stack
-  elsif into == "B"
-    B << stack
-  elsif into == "C"
-    C << stack
+  if into == "a"
+    a << stack
+  elsif into == "b"
+    b << stack
+  elsif into == "c"
+    c << stack
   end
 
-  p "here is the status | A = #{A} | B = #{B} | C = #{C} |"
+  if a != a.sort.reverse || b != b.sort.reverse || c != c.sort.reverse
+    p "error! this cannot be done. please retry"
+    a = a_replay
+    b = b_replay
+    c = c_replay
+  end
 
-  break if C == init
+  p "here is the status | a = #{a} | b = #{b} | C = #{c} |"
+
+  break if c == init
 
 end
