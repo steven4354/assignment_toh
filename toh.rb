@@ -21,4 +21,42 @@ until i == 0
   i = i - 1
 end
 
-p "here is the initial layout. objective: move all the items to array C"
+init = A.dup
+
+p "here is the status | A = #{A} | B = #{B} | C = #{C} |"
+p "objective: move all the blocks from array A to C"
+
+#making the loop
+
+while true
+
+  p "which array do you want to move a stack/number from?"
+
+  from = gets.chomp
+
+  if from == "A"
+    stack = A.pop
+  elsif from == "B"
+    stack = B.pop
+  elsif from == "C"
+    stack = C.pop
+  end
+
+  p "you just moved stack: #{stack} from array: #{from}"
+  p "which array do you want to put this stack/number into?"
+
+  into = gets.chomp
+
+  if into == "A"
+    A << stack
+  elsif into == "B"
+    B << stack
+  elsif into == "C"
+    C << stack
+  end
+
+  p "here is the status | A = #{A} | B = #{B} | C = #{C} |"
+
+  break if C == init
+
+end
