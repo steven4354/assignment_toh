@@ -1,4 +1,4 @@
-p "hellow"
+p "hello"
 
 #gives instructions
 #asks how hard - selecting the number of stacks
@@ -24,7 +24,7 @@ end
 init = a.dup
 
 p "here is the status | a = #{a} | b = #{b} | c = #{c} |"
-p "objective: move all the blocks from array a to c"
+p "objective: move all the blocks from array a to c. write quit in lower case at anytime to stop the game"
 
 #making the loop
 
@@ -39,6 +39,8 @@ while true
 
   from = gets.chomp
 
+  break if from == "quit"
+
   if from == "a"
     stack = a.pop
   elsif from == "b"
@@ -51,6 +53,7 @@ while true
   p "which array do you want to put this stack/number into?"
 
   into = gets.chomp
+  break if into == "quit"
 
   if into == "a"
     a << stack
